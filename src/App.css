@@ -14,19 +14,12 @@
 }
 
 .App-main{
-  background-color: #1f4795;
+  background-color: #183346;
 }
 
 .App-header {
-  background-color: #282c34;
-  /*height: 10px;*/
-  min-height: 10vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
   color: white;
+  margin-top: 10px;
 }
 
 .App-link {
@@ -42,8 +35,34 @@
   }
 }
 
-
-.Album-div{
-  border-style: solid;
+.Photo-div{
+  width: 20%;
+  border-radius: 3px;
+  text-align: center;
+  background: #254764;
+  box-shadow: #122a3c 4px 4px ;
+  color: white;
+}
+.App-img{
+  height: 50px;
+  width: 50px;
+  border-radius: 15px;
+  margin-top: 5px;
+}
+.img-header{
+  background-color: rgb(52, 88, 121);
+  border-radius: 3px;
+  margin-top: 10px;
+}
+.url-div{
+  background: #183246;
+  border-radius: 3px;
+  width: 99%;
+  margin-left: 0.5%;
+  color: #375570;
+  text-align: left;
+}
+.id{
+  color: #375570;
 }
 
