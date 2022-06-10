@@ -1,18 +1,22 @@
 import React from 'react';
 import './Modal.css';
 
-function Modal({closeModal,photo}){
+function Modal({closeModal,currAlbum,photo}){
     return(
           <div className="modalBackground">
             <div className="modalContainer">
-                <div className="titleCloseBtn">
+                <div className="ModalCloseBtn">
                     <button onClick={() => closeModal(false)}> X </button>
                 </div>
-                <div>
                     <img className={"ModalImg"} src={photo.url}/>
+                <div className={"ModalTitle"}>
+                    "{photo.title}"
                 </div>
-                <div>
-                    <h3 className={"ModalTitle"}> title: {photo.title}</h3>
+                <div className={"ModalAlbum"}>
+                    from album {currAlbum.id}
+                </div>
+                <div className={"ModalPhotoId"}>
+                    photo id: {photo.id}
                 </div>
             </div>
           </div>

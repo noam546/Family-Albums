@@ -17,6 +17,7 @@
 .App-header {
   color: white;
   margin-top: 10px;
+  margin-left: 3%;
 }
 
 .App-link {
@@ -35,5 +36,6 @@
 
 .Loading-div{
   color: white;
+  margin-left: 1%;
 }
 

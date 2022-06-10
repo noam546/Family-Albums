@@ -27,18 +27,18 @@ function App() {
     was rendered before the modal was opened
     */
     const [openModal,setOpenModal] = useState(false);
-    const [photo,setPhoto] = useState({id:null,title:null,url:null})
-    const [currAlbumId,setAlbum] = useState(1)
+    const [photo,setPhoto] = useState({id:null,title:null,url:null,album:null})
+    const [currAlbum,setAlbum] = useState({id:1})
     function setModalPhoto(photo){
         setOpenModal(true)
         setPhoto(photo)
     }
-  return (
+    return (
         <main className={"App-main"}>
             <body className={"App-main"}>
-                {openModal && <Modal closeModal={setOpenModal} photo={photo}/>}
-                Photo Albums Page
-                {!openModal && <AlbumsBook currAlbumId={currAlbumId} setAlbum={setAlbum} modalFunc={setModalPhoto}/>}
+                {openModal && <Modal id={"AppModal"} closeModal={setOpenModal} currAlbum={currAlbum} photo={photo}/>}
+                <header className={"App-header"}>Photo Albums Page</header>
+                {!openModal && <AlbumsBook currAlbumId={currAlbum.id} setAlbum={setAlbum} modalFunc={setModalPhoto}/>}
             </body>
         </main>
   );

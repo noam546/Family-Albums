@@ -16,7 +16,7 @@
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     display: flex;
     flex-direction: column;
-    padding: 25px;
+    padding: 15px;
 }
 
 .modalContainer .title {
@@ -25,12 +25,14 @@
     margin-top: 10px;
 }
 
-.titleCloseBtn {
+.ModalCloseBtn {
     display: flex;
     justify-content: flex-end;
+    width: 30px;
+    margin-left: 90%;
 }
 
-.titleCloseBtn button {
+.ModalCloseBtn button {
     background-color: transparent;
     border: none;
     font-size: 25px;
@@ -38,13 +40,31 @@
 }
 
 .ModalImg{
-    width: 80%;
-    height: 80%;
+    width: 70%;
+    height: 70%;
     border-radius: 5px;
+    margin: 0px 75px;
 }
 
 .ModalTitle{
-    color: black;
+    color: #254664;
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.ModalPhotoId{
+    color: #254664;
+    text-align: center;
+    padding: 5px;
+    font-size: 10px;
+}
+
+.ModalAlbum{
+    color: #254664;
+    text-align: center;
+    margin-top: 30px;
+    font-size: 10px;
 }
 
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import './AlbumsBook.css';
 import Album from './Album';
-import Dropdown from "./Dropdown";
+import DropdownMenu from "./DropdownMenu";
 
 function getAlbum(albumId){
     return fetch('https://jsonplaceholder.typicode.com/albums?id='+albumId)
@@ -15,7 +15,6 @@ function getAlbum(albumId){
         .then((json) => ({id: json[0].id,title: json[0].title}))
         .catch((reason) => console.warn(reason));
 }
-
 
 class AlbumsBook extends React.Component{
     constructor(props) {
@@ -36,6 +35,7 @@ class AlbumsBook extends React.Component{
         if(!map[albumId]){
             const newAlbum = await this.createAlbum(albumId);
             map[albumId] = newAlbum
+            // const length = {...this.state.length}.valueOf()
             this.setState({albums: map,length : map.length})
         }
     }
@@ -53,18 +53,21 @@ class AlbumsBook extends React.Component{
     }
 
     render() {
-        console.log(this.props.currAlbumId)
-        const albums = {...this.state.albums}
-        const id = this.props.currAlbumId
-        return (<div>
-                    <div>there are {this.state.albums? this.state.albums.length : 0} existing albums</div>
-                    <Dropdown handleClick={(albumId) => this.props.setAlbum(albumId)}/>
-                    <div className={"AlbumsBook-div"}>
-                        {albums[id] ? <Album id={id} title={albums[id].title} modalFunc={this.props.modalFunc}/> : this.createAndSetAlbum(id)}
+            const albums = {...this.state.albums}
+            const id = this.props.currAlbumId
+            return (<div>
+                        <div className={"existingAlbums"}>
+                            <text >
+                                {Object.keys(albums).includes('undefined')? Object.keys(albums).length - 1 : Object.keys(albums).length} existing albums
+                            </text>
+                        </div>
+                        <DropdownMenu  handleClick={this.props.setAlbum}/>
+                        <div className={"AlbumsBook-div"}>
+                            {albums[id] ? <Album id={id} title={albums[id].title} modalFunc={this.props.modalFunc}/> : this.createAndSetAlbum(id)}
+                        </div>
                     </div>
-                </div>
 
-        );
+            );
     }
 }
 
