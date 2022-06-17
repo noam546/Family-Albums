@@ -25,7 +25,7 @@ class AlbumsBook extends React.Component{
         }
     }
     componentDidMount() {
-        this.setCurrAlbum(this.state.currAlbumId)
+        this.setCurrAlbum(this.props.currAlbumId)
     }
     //check if the album already has brought from Json
     //in order to handle the lazy loading
@@ -33,37 +33,28 @@ class AlbumsBook extends React.Component{
     async setCurrAlbum(albumId){
         const map = {...this.state.albums}
         if(!map[albumId]){
-            const newAlbum = await this.createAlbum(albumId);
-            map[albumId] = newAlbum
-            // const length = {...this.state.length}.valueOf()
+            map[albumId] = await this.createAlbum(albumId)
             this.setState({albums: map,length : map.length})
         }
     }
     //get the album from Json and return it
     //async in order to wait for the response from Json
     async createAlbum(albumId){
-        const album = await getAlbum(albumId)
-        return album;
+        return await getAlbum(albumId);
     }
     //in order to handle the situation that the currAlbumId is changing in the
     //and the album has not brought yes from Json
-    createAndSetAlbum(albumId){
-        this.setCurrAlbum(albumId)
-        return (<div className={"Loading-div"}>Loading...</div>)
-    }
+    // createAndSetAlbum(albumId){
+    //     this.setCurrAlbum(albumId)
+    //     return (<div className={"Loading-div"}>Loading...</div>)
+    // }
 
     render() {
-            const albums = {...this.state.albums}
-            const id = this.props.currAlbumId
             return (<div>
-                        <div className={"existingAlbums"}>
-                            <text >
-                                {Object.keys(albums).includes('undefined')? Object.keys(albums).length - 1 : Object.keys(albums).length} existing albums
-                            </text>
-                        </div>
                         <DropdownMenu  handleClick={this.props.setAlbum}/>
                         <div className={"AlbumsBook-div"}>
-                            {albums[id] ? <Album id={id} title={albums[id].title} modalFunc={this.props.modalFunc}/> : this.createAndSetAlbum(id)}
+                            {/*{albums[id] ? <Album id={id} title={albums[id].title} modalFunc={this.props.modalFunc}/> : this.createAndSetAlbum(id)}*/}
+                            <Album id={this.props.currAlbumId} modalFunc={this.props.modalFunc}/>
                         </div>
                     </div>
 

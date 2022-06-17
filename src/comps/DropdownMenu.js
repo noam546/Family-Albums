@@ -39,7 +39,7 @@ class DropdownMenu extends React.Component{
                     <button onClick={()=>this.handleClick()} className="dropbtn">Select Album</button>
                     <div id={"myDropdown"} className={"dropdown-content"}>
                         {this.state.albumsIds && this.state.albumsIds.map(
-                            (album) => <a onClick={()=>this.props.handleClick({id:album.id})} >album {album.id}</a>)}
+                            (album) => <a key={album.id} onClick={()=>this.props.handleClick({id:album.id})} >album {album.id}</a>)}
                     </div>
                 </div>)
     }

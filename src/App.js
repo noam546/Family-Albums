@@ -35,11 +35,11 @@ function App() {
     }
     return (
         <main className={"App-main"}>
-            <body className={"App-main"}>
+            {/*<body className={"App-main"}>*/}
                 {openModal && <Modal id={"AppModal"} closeModal={setOpenModal} currAlbum={currAlbum} photo={photo}/>}
                 <header className={"App-header"}>Photo Albums Page</header>
                 {!openModal && <AlbumsBook currAlbumId={currAlbum.id} setAlbum={setAlbum} modalFunc={setModalPhoto}/>}
-            </body>
+            {/*</body>*/}
         </main>
   );
 }

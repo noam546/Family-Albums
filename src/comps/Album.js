@@ -27,6 +27,7 @@ class Album extends React.Component{
         super(props);
         this.state = {
             photos: null,
+            currId: null
         }
     }
     componentDidMount() {
@@ -36,16 +37,18 @@ class Album extends React.Component{
     //get photos array from json and set the state
     async createPhotos(albumId){
         const photos = await getPhotos(albumId);
-        this.setState({photos: photos})
+        this.setState({photos: photos,currId:albumId})
     }
 
     render() {
         //if the photos have not brought yet from Json showing loading...
         //otherwise, the photos will render
+        if(this.props.id != this.state.currId)
+            this.createPhotos(this.props.id)
         return (
-                this.state.photos ? this.state.photos.map((photo)=>
-                        <Photo id={photo.id} title={photo.title} thumbnailUrl={photo.thumbnailUrl} url={photo.url} modalFunc={this.props.modalFunc}/>) :
-                    <div className={"Loading-div"}>Loading...</div>
+                this.state.photos && this.props.id == this.state.currId ? this.state.photos.map((photo)=>
+                        <Photo key={photo.id} id={photo.id} title={photo.title} thumbnailUrl={photo.thumbnailUrl} url={photo.url} modalFunc={this.props.modalFunc}/>) :
+                        <div className={"Loading-div"}>Loading...</div>
         )
     }
 

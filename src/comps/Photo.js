@@ -20,7 +20,7 @@ function Photo({id , title , url , thumbnailUrl,modalFunc}){
     return(<div onClick={() => {modalFunc({id:id , title:title , url:url});}} className={"Photo-div"}>
                 <header className={"img-header"}><img className={"App-img"} src={thumbnailUrl}/></header>
                 <div className={"title"}>
-                    <text>{title}</text>
+                    {title}
                 </div>
                 <div className={"id"}>
                     <footer>id:{id}</footer>
